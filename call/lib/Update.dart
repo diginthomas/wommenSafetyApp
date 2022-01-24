@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:call/backend.dart';
+import 'package:provider/provider.dart';
 
 class UpdateScreen extends StatefulWidget {
   @override
@@ -8,6 +10,8 @@ class UpdateScreen extends StatefulWidget {
 }
 
 class _UpdateScreen extends State<UpdateScreen> {
+  TextEditingController number = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +37,7 @@ class _UpdateScreen extends State<UpdateScreen> {
                     size: 25,
                   ),
                   Text(
-                    "1234567890",
+                    Provider.of<Db>(context).user.phone,
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   )
                 ],
@@ -57,13 +61,18 @@ class _UpdateScreen extends State<UpdateScreen> {
                             child: Column(
                               children: [
                                 TextField(
+                                  keyboardType: TextInputType.phone,
                                   autofocus: true,
+                                  controller: number,
                                   decoration: InputDecoration(
                                     icon: Icon(Icons.phone),
                                   ),
                                 ),
                                 RaisedButton(
-                                  onPressed: () {
+                                  onPressed: () async {
+                                    await Provider.of<Db>(context,
+                                            listen: false)
+                                        .updateData(number.text);
                                     Navigator.pop(context);
                                   },
                                   color: Colors.red,

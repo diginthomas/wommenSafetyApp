@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
-
-import 'Home.dart';
+import 'package:call/Home.dart';
+import 'package:call/backend.dart';
+import 'package:provider/provider.dart';
 
 class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _App();
@@ -11,12 +13,16 @@ class App extends StatefulWidget {
 }
 
 class _App extends State<App> {
-  // _callNumber() async{
-  //   const number = '9745973368'; //set the number here
-  //   var res = await FlutterPhoneDirectCaller.callNumber(number);
-  // }
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: ThemeData.dark(), home: HomeScreen());
+    return ChangeNotifierProvider(
+      create: (context) => Db(),
+      child: MaterialApp(theme: ThemeData.dark(), home: const HomeScreen()),
+    );
   }
 }
