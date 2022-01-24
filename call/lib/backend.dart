@@ -11,7 +11,7 @@ class Db extends ChangeNotifier {
       db.execute(
           'CREATE TABLE User(id INTEGER PRIMARY KEY ,Phnum VARCAHR(10) )');
     });
-    await db.rawInsert('INSERT INTO User(Phnum) VALUES(?)', ["Add Number"]);
+   // await db.rawInsert('INSERT INTO User(Phnum) VALUES(?)', ["Add Number"]);
   }
 
   Future<void> getData() async {

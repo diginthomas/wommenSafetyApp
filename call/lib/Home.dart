@@ -20,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreen extends State<HomeScreen> {
   void _callNumber(String number) async {
     
-    var res = await FlutterPhoneDirectCaller.callNumber(number);
+     await FlutterPhoneDirectCaller.callNumber(number);
     String message = "This is a test message!";
     List<String> recipents = ["1234567890", "5556787676"];
 
