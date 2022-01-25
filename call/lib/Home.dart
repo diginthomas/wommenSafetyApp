@@ -19,19 +19,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreen extends State<HomeScreen> {
   void _callNumber(String number) async {
-    
-     await FlutterPhoneDirectCaller.callNumber(number);
-    String message = "This is a test message!";
-    List<String> recipents = ["1234567890", "5556787676"];
+    await FlutterPhoneDirectCaller.callNumber(number);
+    // String message = "This is a test message!";
+    // List<String> recipents = ["1234567890", "5556787676"];
 
-    sendSMS(message: message, recipients: recipents);
+    // sendSMS(message: message, recipients: recipents);
   }
 
   @override
   void initState() {
-     Provider.of<Db>(context,listen: false).getData();
-    ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () {
-      _callNumber(Provider.of<Db>(context).user.phone);
+    ShakeDetector.autoStart(onPhoneShake: () {
+      _callNumber(Provider.of<Db>(context, listen: false).user.phone);
+      print('shaking');
     });
     super.initState();
   }
@@ -40,12 +39,12 @@ class _HomeScreen extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Women Saftey"),
+        title: Text('Number:' + Provider.of<Db>(context).user.phone),
         actions: [
           IconButton(
             icon: const Icon(
               Icons.edit,
-              color: Colors.white70,
+              color: Color(0xff3fc56b),
               size: 24,
             ),
             onPressed: () {
@@ -61,11 +60,14 @@ class _HomeScreen extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               WidgetCircularAnimator(
+                innerColor: Color(0xff3fc56b),
+                outerColor: Color(0xffff6480),
+                outerAnimation: Curves.bounceOut,
                 child: Container(
                   decoration: BoxDecoration(shape: BoxShape.circle),
                   child: Icon(
                     Icons.trip_origin,
-                    color: Colors.redAccent[200],
+                    color: Color(0xfff9c859),
                     size: 60,
                   ),
                 ),

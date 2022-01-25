@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:call/Home.dart';
 import 'package:call/backend.dart';
 import 'package:provider/provider.dart';
+import 'package:call/startpage.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _App extends State<App> {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => Db(),
-      child: MaterialApp(theme: ThemeData.dark(), home: const HomeScreen()),
+      child: MaterialApp(theme: ThemeData.dark(), home: StartScreen()),
     );
   }
 }

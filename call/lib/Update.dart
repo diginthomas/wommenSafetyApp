@@ -16,7 +16,7 @@ class _UpdateScreen extends State<UpdateScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Update"),
+        title: const Text("Update"),
       ),
       body: SafeArea(
         child: Column(
@@ -27,7 +27,7 @@ class _UpdateScreen extends State<UpdateScreen> {
               height: 50,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
-                  color: Colors.red[400]),
+                  color: Color(0xff3fc56b)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -75,7 +75,7 @@ class _UpdateScreen extends State<UpdateScreen> {
                                         .updateData(number.text);
                                     Navigator.pop(context);
                                   },
-                                  color: Colors.red,
+                                  color: Color(0xff9f7efe),
                                   child: Text("Save"),
                                 )
                               ],
@@ -84,7 +84,7 @@ class _UpdateScreen extends State<UpdateScreen> {
                         );
                       });
                 },
-                color: Colors.red[400],
+                color: Color(0xff3fc56b),
                 child: Text("Update"))
           ],
         ),
